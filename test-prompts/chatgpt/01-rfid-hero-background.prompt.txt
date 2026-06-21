@@ -1,0 +1,41 @@
+Generate a production-ready HERO BACKGROUND image (no text, no logos).
+
+INTENDED USE
+Hero background for an "Industrial RFID systems" web landing page, 1600x900, opaque.
+The headline and the Balluff wordmark will be overlaid later in code — leave the LEFT THIRD as
+clean, calm negative space for that overlay.
+
+BRAND CONTEXT (Balluff — industrial automation; achromatic, technical, restrained)
+Register: the "Balluff Room" — an abstract, pre-rendered, silver-gray engineered architectural
+stage with soft directional lighting and clean engineered material surfaces. Near-monochrome.
+Premium B2B. NOT colorful. Compose INSIDE the supplied reference render; preserve its lighting,
+perspective, and material treatment. Do not invent a different environment.
+
+SCENE / SUBJECT
+A silver-gray engineered stage. An industrial RFID read/write head presented at a dynamic 45-degree
+angle, right-of-center, with a soft rim-light "product glow" separating it from the background and a
+clean drop shadow on the floor. A sparse, restrained field of small red dots as a single digital
+accent — used once, not as a repeating pattern.
+
+VISUAL DIRECTION
+Style: engineered, clean, technical, premium, restrained.
+Composition: asymmetric, subject right-of-center, generous empty negative space on the left.
+Lighting: soft directional, cool-neutral; product glow; clean floor shadow.
+Density: medium-low. Dynamic angle, never centered.
+
+CONSTRAINTS
+Must include: silver-gray engineered surfaces, clean negative space, subtle depth, premium technical feel.
+Must avoid: people / faces, robot faces, neon, cyberpunk, saturated colors, any text, any logo or
+wordmark, fake UI glyphs, stock-photo cliches, centered composition.
+
+OUTPUT REQUIREMENTS
+- Clean, polished, web-ready. Near-achromatic silver-gray. At most a small red accent.
+- No watermark. No text. No logos (added in code). Leave the left third as usable negative space.
+
+REFERENCE IMAGES (attach; compose within them)
+- balluff-rooms/balluff-room-studio-01.jpg  (the backdrop register — match it)
+- examples/00-primary-optical-sensors.jpeg  (the "what good looks like" anchor)
+
+POST (deterministic, done after generation — see brand-locking.md)
+Silver-gray grade + palette-snap toward the achromatic ramp; code-overlay the real wordmark
+(top-left) and the headline in Roboto Flex.

@@ -1,0 +1,26 @@
+{
+  "id": "condition-monitoring-editorial-v1",
+  "asset_type": "lifestyle_scene",
+  "purpose": "Editorial application visual for an IO-Link condition-monitoring focus-topic section (atmosphere, not a spec diagram).",
+  "audience": "plant managers, maintenance leads, automation engineers",
+  "message": "Continuous condition monitoring with IO-Link sensors keeps the line running.",
+  "route": "image_generation",
+  "engine": "gpt-image-2",
+  "format": { "width": 1600, "height": 1000, "safe_area": "none (atmospheric source image; any copy overlaid in code in the section layer)", "background": "opaque" },
+  "visual_direction": {
+    "style": "silver-gray Balluff Room register applied to a real-ish industrial application scene; engineered, calm, technical",
+    "subject": "an abstract industrial application scene: a clean automation line / machine module in silver-gray, with a Balluff IO-Link sensor at 45deg catching a soft product-glow rim-light; subtle implied data/connectivity via a single sparse field of small red dots",
+    "composition": "asymmetric, subject lower-right, depth falling off into clean silver-gray negative space upper-left, never centered",
+    "lighting": "soft directional, cool-neutral, engineered material highlights toward silver",
+    "density": "medium"
+  },
+  "brand": { "palette": "near-achromatic silver-gray, single small red accent", "spec_ref": "../../brand.spec.json", "spec_version": "0.1.0" },
+  "constraints": {
+    "must_include": ["silver-gray graded industrial scene", "a sensor module at 45deg with product glow", "engineered clean surfaces", "subtle depth"],
+    "must_avoid": ["human faces / people from prose", "neon", "saturated colors", "fake gauges or unreadable UI numbers", "any logo or wordmark", "centered composition", "stock-photo cliches"]
+  },
+  "reference_images": ["../../balluff-rooms/balluff-room-studio-02.jpg", "../../examples/00-primary-optical-sensors.jpeg"],
+  "copy": { "in_image_text": false, "overlay_text_handled_by_code": true },
+  "brand_locking": { "palette_snap": true, "silver_gray_grade": true, "code_overlay_logo": true, "code_overlay_text": true },
+  "output": { "formats": ["png"], "sizes": ["1600x1000"], "dir": "../../out/imagegen-condition-monitoring/" }
+}

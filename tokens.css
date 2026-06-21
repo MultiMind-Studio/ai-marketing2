@@ -1,0 +1,122 @@
+/**
+ * Balluff design tokens — Tailwind v4 @theme block
+ * ==================================================
+ * Source of truth: ./design.md (color, type, spacing, breakpoints, radius, elevation).
+ * Layout scales (spacing/breakpoints/radius/elevation) are PMM-derived; brand colors
+ * are from Balluff brand sources. If design.md changes, regenerate this file.
+ *
+ * Usage:
+ *   @import "tailwindcss";
+ *   @import "./tokens.css";
+ *
+ * Tools that read CSS tokens directly (Claude Design, v0, Lovable) can ingest this
+ * file without further translation.
+ */
+
+@theme {
+  /* ────────────────────────────────────────────────────────────
+   * Color — brand palette (achromatic + Balluff Red as condiment)
+   * ──────────────────────────────────────────────────────────── */
+  --color-balluff-black: #1d1d1b;
+  --color-balluff-white: #ffffff;
+  --color-balluff-red:   #e73446;
+
+  /* Gray ramp — derived as tints of #1d1d1b. Use these for cards, borders,
+     dividers, hover states, and secondary text. */
+  --color-gray-50:  #f5f5f5;  /* subtle bg / card fill (5% tint) */
+  --color-gray-200: #e6e6e6;  /* border / divider (10% tint) */
+  --color-gray-400: #9e9e9e;  /* disabled text / inactive UI (40% tint) */
+  --color-gray-600: #6b6b6a;  /* secondary text (60% tint) */
+  --color-gray-800: #414140;  /* heading-secondary / dark UI (80% tint) */
+  --color-gray-900: #1d1d1b;  /* primary text — same as balluff-black */
+
+  /* ────────────────────────────────────────────────────────────
+   * Color — data-visualization palette (charts/diagrams/KPIs only;
+   * never use as brand-surface or button colors)
+   * ──────────────────────────────────────────────────────────── */
+  --color-chart-blue:   #6A9DC6;  /* primary data accent */
+  --color-chart-cyan:   #70BFD7;  /* secondary data accent */
+  --color-chart-gray:   #94A7B4;  /* neutral data series */
+  --color-chart-silver: #BCBCBC;  /* supporting neutral / disabled */
+  --color-chart-teal:   #A3C7C7;  /* additional accent */
+  --color-chart-green:  #779389;  /* additional accent */
+
+  /* ────────────────────────────────────────────────────────────
+   * Color — UI state palette (web/app only; semantic, not decorative).
+   * Note: --color-error is NOT the same as --color-balluff-red.
+   * Balluff Red is a brand accent; error red is a UX signal.
+   * ──────────────────────────────────────────────────────────── */
+  --color-error:    #d32f2f;
+  --color-success:  #2e7d32;
+  --color-warning:  #f9a825;
+  --color-info:     #6A9DC6;  /* alias of --color-chart-blue */
+  --color-disabled: #BCBCBC;  /* alias of --color-chart-silver */
+
+  /* ────────────────────────────────────────────────────────────
+   * Typography — Roboto Flex variable, regular for body, bold for
+   * emphasis and headings. Hierarchy is weight + size, not typeface variety.
+   * ──────────────────────────────────────────────────────────── */
+  --font-sans: "Roboto Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Type scale — values in design.md:144 (PMM-derived) */
+  --text-xs:                 0.75rem;   /* 12 px */
+  --text-xs--line-height:    1.4;
+  --text-sm:                 0.875rem;  /* 14 px */
+  --text-sm--line-height:    1.5;
+  --text-base:               1rem;      /* 16 px */
+  --text-base--line-height:  1.6;
+  --text-lg:                 1.125rem;  /* 18 px */
+  --text-lg--line-height:    1.5;
+  --text-xl:                 1.25rem;   /* 20 px — H4 */
+  --text-xl--line-height:    1.4;
+  --text-2xl:                1.5rem;    /* 24 px — H3 */
+  --text-2xl--line-height:   1.3;
+  --text-3xl:                1.875rem;  /* 30 px — H2 small */
+  --text-3xl--line-height:   1.25;
+  --text-4xl:                2.25rem;   /* 36 px — H2 standard */
+  --text-4xl--line-height:   1.15;
+  --text-5xl:                3rem;      /* 48 px — H1 */
+  --text-5xl--line-height:   1.1;
+  --text-6xl:                3.75rem;   /* 60 px — oversized hero H1 */
+  --text-6xl--line-height:   1.05;
+
+  /* ────────────────────────────────────────────────────────────
+   * Spacing — 4 px base unit. Token names = unit count.
+   * Tailwind generates p-1, p-2, …, p-24 etc. from this base.
+   * ──────────────────────────────────────────────────────────── */
+  --spacing: 0.25rem;  /* 4 px base */
+
+  /* ────────────────────────────────────────────────────────────
+   * Breakpoints — mobile-first, Tailwind-aligned. Captures were
+   * taken at 1440 × 900; xl is the design target.
+   * ──────────────────────────────────────────────────────────── */
+  --breakpoint-sm: 40rem;    /* 640 px  — mobile landscape, small tablet */
+  --breakpoint-md: 48rem;    /* 768 px  — tablet portrait */
+  --breakpoint-lg: 64rem;    /* 1024 px — tablet landscape, small desktop */
+  --breakpoint-xl: 80rem;    /* 1280 px — desktop (target) */
+  --breakpoint-2xl: 96rem;   /* 1536 px — wide desktop */
+
+  /* Container max-width target. Use as `max-w-container` or wire into
+     Tailwind's container plugin per project. */
+  --container-balluff: 80rem;  /* 1280 px */
+
+  /* ────────────────────────────────────────────────────────────
+   * Radius — Balluff leans square. Use the full ramp when soft helps.
+   * ──────────────────────────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-full: 9999px;
+
+  /* ────────────────────────────────────────────────────────────
+   * Elevation — Balluff leans flat. Hairline borders and surface
+   * tint do most of the work; shadows stay subtle even at lg.
+   * ──────────────────────────────────────────────────────────── */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.10);
+}

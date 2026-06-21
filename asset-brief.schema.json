@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://balluff.local/asset-brief.schema.json",
+  "title": "Balluff visual asset brief",
+  "description": "Structured brief the prompt builder compiles into a GLM build prompt or a GPT-Image-2 generation prompt. Validates against brand.spec.json conventions. One brief = one asset need.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "asset_type", "purpose", "route", "engine"],
+  "properties": {
+    "id": { "type": "string", "description": "kebab-case unique id, e.g. rfid-category-hero-v1" },
+    "asset_type": {
+      "type": "string",
+      "enum": ["website_hero", "hero_background", "category_landing", "marketing_section", "sales_one_pager", "og_card", "promo_card", "product_shot", "lifestyle_scene", "poster_concept", "diagram", "icon", "moodboard"],
+      "description": "Drives the default route per brand.spec.json.generation.routing."
+    },
+    "purpose": { "type": "string" },
+    "audience": { "type": "string", "default": "technically-literate automation engineers, plant managers, OEM design teams, procurement" },
+    "message": { "type": "string", "description": "Single-sentence claim; number-led, no superlatives (brand.spec voice.forbidden_words)." },
+    "route": {
+      "type": "string",
+      "enum": ["svg_code", "react_html_render", "image_generation", "image_edit", "hybrid"],
+      "description": "code routes -> GLM build; image_generation/edit -> GPT-Image-2; hybrid -> generated source + code overlay."
+    },
+    "engine": { "type": "string", "enum": ["glm-5.2", "gpt-image-2"] },
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "width": { "type": "integer" },
+        "height": { "type": "integer" },
+        "safe_area": { "type": "string", "description": "region to leave open for code-overlaid headline/logo" },
+        "background": { "type": "string", "enum": ["opaque", "transparent"], "default": "opaque" }
+      }
+    },
+    "visual_direction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "style": { "type": "string", "default": "silver-gray Balluff Room register; engineered, clean, technical; premium B2B; restrained" },
+        "subject": { "type": "string" },
+        "composition": { "type": "string", "default": "dynamic 45deg, never centered; asymmetric; generous negative space" },
+        "lighting": { "type": "string", "default": "soft directional; product glow rim-light; clean drop shadow" },
+        "density": { "type": "string", "enum": ["low", "medium-low", "medium", "high"], "default": "medium-low" }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "palette": { "type": "string", "default": "achromatic (#1d1d1b / #ffffff / gray ramp) + Balluff Red #e73446 as condiment only" },
+        "spec_ref": { "type": "string", "default": "./brand.spec.json" },
+        "spec_version": { "type": "string", "default": "0.1.0" }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "must_include": { "type": "array", "items": { "type": "string" } },
+        "must_avoid": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["robot faces", "human faces from prose", "cyberpunk neon", "fake/unreadable UI text", "stock-photo handshake", "random floating dashboards", "centered composition", "heavy rounded corners", "Balluff Red as area fill", "emoji", "superlative copy"]
+        },
+        "brand_negative_rules": { "type": "string", "default": "see brand.spec.json.hard_never" }
+      }
+    },
+    "reference_images": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Absolute/relative paths to attach (REQUIRED when asset needs the Balluff Room backdrop: ./balluff-rooms/balluff-room-studio-01.jpg). Reference priming is the #1 brand-locking lever — see brand-locking.md."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "in_image_text": { "type": "boolean", "default": false, "description": "Prefer false — GPT-Image-2 text rendering drifts. Overlay real text in code." },
+        "overlay_text_handled_by_code": { "type": "boolean", "default": true },
+        "exact_text": { "type": "string", "description": "if in_image_text true, the exact quoted copy" }
+      }
+    },
+    "brand_locking": {
+      "type": "object",
+      "description": "Deterministic post-generation steps (brand-locking.md). Applied after raster generation.",
+      "additionalProperties": false,
+      "properties": {
+        "palette_snap": { "type": "boolean", "default": true, "description": "quantize toward the locked achromatic palette" },
+        "silver_gray_grade": { "type": "boolean", "default": true },
+        "code_overlay_logo": { "type": "boolean", "default": true, "description": "composite the real wordmark SVG, never let the model draw it" },
+        "code_overlay_text": { "type": "boolean", "default": true }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "formats": { "type": "array", "items": { "type": "string", "enum": ["png", "webp", "html", "svg", "pdf"] } },
+        "sizes": { "type": "array", "items": { "type": "string" } },
+        "dir": { "type": "string", "default": "./out/" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Filled by the harness on generation (manifest pattern).",
+      "additionalProperties": true,
+      "properties": {
+        "model": { "type": "string" },
+        "prompt_hash": { "type": "string" },
+        "source_images": { "type": "array", "items": { "type": "string" } },
+        "created_at": { "type": "string" }
+      }
+    }
+  }
+}

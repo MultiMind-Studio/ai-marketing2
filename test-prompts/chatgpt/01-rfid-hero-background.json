@@ -1,0 +1,26 @@
+{
+  "id": "rfid-hero-background-v1",
+  "asset_type": "hero_background",
+  "purpose": "Above-the-fold hero background for an Industrial RFID systems landing page; headline + wordmark overlaid in code.",
+  "audience": "automation engineers, plant managers, OEM design teams",
+  "message": "Industrial RFID systems for reliable traceability on the factory floor.",
+  "route": "hybrid",
+  "engine": "gpt-image-2",
+  "format": { "width": 1600, "height": 900, "safe_area": "left third open for code-overlaid headline + top-left wordmark", "background": "opaque" },
+  "visual_direction": {
+    "style": "silver-gray Balluff Room register — engineered, clean, technical; premium B2B abstraction",
+    "subject": "an abstract industrial stage: a silver-gray engineered architectural space with soft directional light and clean material surfaces, an RFID read/write head subtly present at 45deg with a soft rim-light product glow, a single sparse accent of small red dots suggesting the digital/connected signal",
+    "composition": "asymmetric focal cluster right-of-center, generous negative space on the left for overlay copy, dynamic angle, never centered",
+    "lighting": "soft directional, cool-neutral, subtle product glow rim-light + clean floor drop shadow",
+    "density": "medium-low"
+  },
+  "brand": { "palette": "achromatic silver-gray; near-monochrome; at most a small Balluff Red accent", "spec_ref": "../../brand.spec.json", "spec_version": "0.1.0" },
+  "constraints": {
+    "must_include": ["silver-gray engineered material surfaces", "clean negative space", "subtle depth", "premium technical feel"],
+    "must_avoid": ["human faces", "robot faces", "neon / cyberpunk", "saturated colors", "fake unreadable UI text", "any logo or wordmark (overlaid in code)", "stock-photo cliches", "centered composition"]
+  },
+  "reference_images": ["../../balluff-rooms/balluff-room-studio-01.jpg", "../../examples/00-primary-optical-sensors.jpeg"],
+  "copy": { "in_image_text": false, "overlay_text_handled_by_code": true },
+  "brand_locking": { "palette_snap": true, "silver_gray_grade": true, "code_overlay_logo": true, "code_overlay_text": true },
+  "output": { "formats": ["png"], "sizes": ["1600x900"], "dir": "../../out/imagegen-rfid-hero/" }
+}

@@ -1,0 +1,40 @@
+Generate a production-ready EDITORIAL APPLICATION image (no text, no logos).
+
+INTENDED USE
+Atmospheric source visual for an "IO-Link condition monitoring" focus-topic web section, 1600x1000.
+This is mood / application atmosphere, NOT a technical diagram and NOT a spec sheet. Any copy is
+overlaid later in code.
+
+BRAND CONTEXT (Balluff — industrial automation; achromatic, technical, restrained)
+Apply the Balluff "silver-gray" register: a clean, engineered, near-monochrome industrial scene.
+Compose within / match the supplied reference render's lighting, perspective, and material treatment.
+Premium, calm, technical — never busy, never colorful.
+
+SCENE / SUBJECT
+An abstract automation line or machine module rendered in silver-gray. A Balluff IO-Link sensor module
+sits at a dynamic 45-degree angle, lower-right, catching a soft "product glow" rim-light with a clean
+drop shadow. Depth falls off into clean silver-gray negative space toward the upper-left. A single,
+sparse field of small red dots implies the connected/digital signal — used once, restrained.
+
+VISUAL DIRECTION
+Style: engineered, calm, technical, premium; silver-gray graded.
+Composition: asymmetric, subject lower-right, generous negative space upper-left, never centered.
+Lighting: soft directional, cool-neutral; engineered material highlights toward silver (#bcbcbc).
+Density: medium.
+
+CONSTRAINTS
+Must include: silver-gray graded industrial scene, a sensor module at 45deg with product glow,
+engineered clean surfaces, subtle depth.
+Must avoid: people / faces, neon, saturated colors, fake gauges or unreadable UI numbers, any text,
+any logo or wordmark, centered composition, stock-photo cliches.
+
+OUTPUT REQUIREMENTS
+- Clean, polished, web-ready. Near-achromatic silver-gray; at most a small red accent.
+- No watermark, no text, no logos. Atmospheric, usable as a section background or inset.
+
+REFERENCE IMAGES (attach; match the register)
+- balluff-rooms/balluff-room-studio-02.jpg
+- examples/00-primary-optical-sensors.jpeg
+
+POST (deterministic — see brand-locking.md)
+Silver-gray grade + palette-snap; any headline/labels overlaid in Roboto Flex in code.

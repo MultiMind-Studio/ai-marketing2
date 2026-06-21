@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://balluff.local/brand.spec.json",
+  "spec_version": "0.1.0",
+  "meta": {
+    "brand": "Balluff",
+    "description": "Machine-readable Balluff brand spec for AI visual generation (GLM-5.2 code builds + GPT-Image-2 raster). Derived from design.md in this repo; design.md is the prose authority, brandportal.balluff.com is the true source of truth.",
+    "derived_from": "./design.md",
+    "true_source_of_truth": "brandportal.balluff.com",
+    "lineage": "Seeded 2026-06-21 from ai-marketing/design-system (hermit-crab). ai-marketing remains canonical for its existing consumers (Furnace BI dashboards, beacon decks, Kalli, Builder-common).",
+    "consumed_by": ["glm-delegate (GLM-5.2 HTML/SVG builds)", "codex $imagegen (GPT-Image-2 raster)", "asset-brief.schema.json prompt builders"]
+  },
+
+  "voice": {
+    "personality": ["fresh", "technological", "high-quality"],
+    "never": ["cold", "breathless"],
+    "principles": [
+      "Clear, declarative sentences.",
+      "Numbers carry claims; rhetoric does not. A sensor that detects to 0.01 mm is described as detecting to 0.01 mm.",
+      "Name a specification precisely where it matters; omit it where it does not.",
+      "Confidence without bombast. Technical depth made accessible.",
+      "Sentence case everywhere; all-caps reserved for the wordmark and the eyebrow tag."
+    ],
+    "forbidden_words": ["industry-leading", "leading", "innovative solutions", "world-class", "cutting-edge", "next-generation", "revolutionary", "game-changing"],
+    "rule": "If the spec doesn't support the claim, drop the claim."
+  },
+
+  "color": {
+    "rule": "Achromatic + Balluff Red as condiment. Red is rationed, never a dominant area color. This achromatic-plus-red inverse of the colorful automation field is the deliberate differentiator.",
+    "brand": {
+      "black":       { "hex": "#1d1d1b", "use": "Primary text; logo on light backgrounds" },
+      "white":       { "hex": "#ffffff", "use": "Primary backgrounds; logo on dark backgrounds" },
+      "balluff_red": { "hex": "#e73446", "use": "Accent ONLY — emphasis, links, key terms, small callouts, CTAs, active states. Never a dominant area fill." }
+    },
+    "gray_ramp": {
+      "note": "Derived as tints of #1d1d1b. Cards, borders, dividers, hover, secondary text.",
+      "gray-50":  { "hex": "#f5f5f5", "tint": "5%",  "use": "subtle bg / card fill" },
+      "gray-200": { "hex": "#e6e6e6", "tint": "10%", "use": "border / divider" },
+      "gray-400": { "hex": "#9e9e9e", "tint": "40%", "use": "disabled text / inactive UI" },
+      "gray-600": { "hex": "#6b6b6a", "tint": "60%", "use": "secondary text" },
+      "gray-800": { "hex": "#414140", "tint": "80%", "use": "heading-secondary / dark UI" },
+      "gray-900": { "hex": "#1d1d1b", "tint": "100%", "use": "primary text (= balluff black)" }
+    },
+    "data_viz": {
+      "scope": "Charts/diagrams/dashboards/KPIs ONLY. Never brand-surface, button, or decorative background. Intentionally desaturated.",
+      "steel_blue": "#6A9DC6", "cyan": "#70BFD7", "cool_gray": "#94A7B4",
+      "silver": "#BCBCBC", "teal_sage": "#A3C7C7", "muted_green": "#779389"
+    },
+    "ui_state": {
+      "scope": "Web/app interactive states only; semantic, not decorative. NOT interchangeable with Balluff Red.",
+      "error": "#d32f2f", "success": "#2e7d32", "warning": "#f9a825",
+      "info": "#6A9DC6", "disabled": "#BCBCBC"
+    }
+  },
+
+  "typography": {
+    "typeface": "Roboto Flex",
+    "rule": "Roboto Flex everywhere (web, app, docs, decks, print). Never substitute a system font. Hierarchy via weight + size, never color alone. Headings bold; body regular; italic for proper-noun emphasis only.",
+    "font_files": "./fonts/Roboto_Flex/ (variable TTF + OFL). Web may load from Google Fonts CDN; local generators embed from here.",
+    "scale": {
+      "xs":  { "px": 12, "lh": 1.4,  "use": "eyebrow tags, helper text, footnotes" },
+      "sm":  { "px": 14, "lh": 1.5,  "use": "small UI labels, table cells" },
+      "base":{ "px": 16, "lh": 1.6,  "use": "body copy (default)" },
+      "lg":  { "px": 18, "lh": 1.5,  "use": "lead paragraph, small hero subhead" },
+      "xl":  { "px": 20, "lh": 1.4,  "use": "H4 / card heading" },
+      "2xl": { "px": 24, "lh": 1.3,  "use": "H3 / hero subhead" },
+      "3xl": { "px": 30, "lh": 1.25, "use": "H2 small" },
+      "4xl": { "px": 36, "lh": 1.15, "use": "H2 standard, section opener" },
+      "5xl": { "px": 48, "lh": 1.1,  "use": "H1, page title" },
+      "6xl": { "px": 60, "lh": 1.05, "use": "oversized hero H1 (sparingly)" }
+    },
+    "provenance": "Scale is PMM-derived (not in Balluff brand sources), calibrated to public balluff.com; examples/00-primary-optical-sensors is the anchor. A future official scale overrides."
+  },
+
+  "layout": {
+    "provenance": "Spacing/breakpoints/radius/elevation are PMM-derived, Tailwind-v4-aligned, calibrated to public balluff.com.",
+    "spacing_base_px": 4,
+    "spacing": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 20, "6": 24, "8": 32, "10": 40, "12": 48, "16": 64, "20": 80, "24": 96 },
+    "spacing_rule": "Balluff favors generous whitespace; when in doubt prefer the larger value.",
+    "breakpoints_px": { "sm": 640, "md": 768, "lg": 1024, "xl": 1280, "2xl": 1536 },
+    "container_max_px": 1280,
+    "container_padding_px": { "mobile": 20, "tablet": 32, "desktop": 64 },
+    "design_target": "xl (1280px); captures taken at 1440x900",
+    "radius_px": { "none": 0, "sm": 2, "md": 4, "lg": 8, "xl": 12, "full": 9999 },
+    "radius_rule": "Square-cornered by default (none for cards/tiles/hero; sm for inputs/buttons). Heavy rounding reads consumer-app, not industrial.",
+    "elevation": {
+      "rule": "Flat by default; hairline borders + surface tint do elevation work. Shadows stay subtle even at top of scale.",
+      "none": "no shadow", "xs": "0 1px 2px rgba(0,0,0,0.04)", "sm": "0 2px 8px rgba(0,0,0,0.06)",
+      "md": "0 4px 16px rgba(0,0,0,0.08)", "lg": "0 8px 24px rgba(0,0,0,0.10)"
+    }
+  },
+
+  "logo": {
+    "wordmark": "BALLUFF — all caps, custom letterforms. Black on light, white on dark. Never modified/red/rotated; never substituted with a generic typeface.",
+    "clear_space": "width of the 'B' on every side, no exceptions",
+    "min_size": { "physical_mm": 15, "digital_px": 43, "a4_letter_width_mm": 55 },
+    "position_by_medium": { "web_app": "top-left (home-link convention)", "print_pdf_deck": "top-right (brand-portal preference)" },
+    "b_signet": "Red 'B' icon appears ONLY paired with the 'innovating automation' claim, level-aligned at wordmark width; never repositioned independently.",
+    "assets": "./logos/ (balluff-wordmark-{black,white}.svg|png; balluff-claim-{black,white}.png|ai; balluff-claim-white.png is production-canonical)"
+  },
+
+  "imagery": {
+    "composition_stack": [
+      "1. Background — the 'Balluff Room': bespoke pre-rendered silver-gray architectural scene. NOT reproducible from prose — supply a render from balluff-rooms/ as a reference image and compose the subject inside it.",
+      "2. Application/industry context — color-graded toward silver-gray to harmonize.",
+      "3. Digital element — sparse field of small red dots, once per surface, not a repeating motif.",
+      "4. People — DO NOT generate from prose (uncanny faces). Source from Balluff's library and composite. Intent: successful, determined, curious, in action, never posed/centered/frontal.",
+      "5. UI graphics — software/dashboards rendered cleanly, no dramatization."
+    ],
+    "photography": "Products at 45deg inside the silver-gray Balluff Room render, with a soft rim-light 'product glow' + clean drop shadow. Dynamic, never centered. Avoid stock cliches (handshake-over-globe, generic conference rooms, cliff-edge silhouettes).",
+    "reference_images": "./balluff-rooms/balluff-room-studio-0{1,2}.jpg — attach for any image-gen prompt needing the backdrop.",
+    "examples": "./examples/ — public balluff.com captures; 00-primary-optical-sensors.jpeg is the canonical 'what good looks like'. Feel reference, not pixel target."
+  },
+
+  "composition_principles": [
+    "Titles left-aligned, never centered.",
+    "White space is generous and intentional; if it feels under-filled it is probably correct.",
+    "Asymmetric splits (1/3+2/3, 1/4+3/4) express hierarchy; 1/2+1/2 only for genuine peers.",
+    "Red-dot pattern is an accent used once or twice per surface, never wallpaper.",
+    "Footers are quiet: author/date/page in low-contrast type."
+  ],
+
+  "hard_never": [
+    "Never use Balluff Red as a dominant area color (condiment only).",
+    "Never use a typeface other than Roboto Flex.",
+    "Never center titles or body content.",
+    "Never use emoji (use the SVG icon set).",
+    "Never use gradients/textures/repeating patterns on brand surfaces.",
+    "Never heavy-round corners (square is default).",
+    "Never invent superlatives; numbers carry claims.",
+    "Never generate the Balluff Room from prose (attach a reference render).",
+    "Never generate human figures from prose (composite library photography).",
+    "Never rely on color alone for hierarchy (weight + size do that).",
+    "Never apply the data-viz palette to brand surfaces or buttons.",
+    "Never confuse Balluff Red (#e73446 brand accent) with error red (#d32f2f UX signal)."
+  ],
+
+  "assets": {
+    "design_doc": "./design.md",
+    "tokens_tailwind": "./tokens.css",
+    "icons_dir": "./icons/ (178 SVGs, viewBox 0 0 70 50, fills #333/#333233/#323232/#343434 not currentColor)",
+    "icons_index": "./icons.md",
+    "logos_dir": "./logos/",
+    "fonts_dir": "./fonts/Roboto_Flex/",
+    "favicon_dir": "./favicon/",
+    "rooms_dir": "./balluff-rooms/",
+    "examples_dir": "./examples/",
+    "html_prompts": "./prompts.md (canonical HTML-gen prompt templates)"
+  },
+
+  "generation": {
+    "image_model": "gpt-image-2",
+    "routing": {
+      "code_svg_html": ["icons", "diagrams", "charts", "OG cards", "sales one-pagers", "UI mockups", "responsive web sections", "anything needing exact text/typography/layout"],
+      "image_generation": ["hero backgrounds (+ code overlay)", "product/lifestyle imagery", "editorial/atmospheric scenes", "poster concepts", "moodboards"],
+      "rule": "Keep final typography + responsive layout in code. Use image-gen for source imagery only; composite real logos + overlay text deterministically."
+    },
+    "brand_locking": "./brand-locking.md — how to actually hold Balluff CI in a raster model (reference priming + achromatic constraint + silver-gray grade + code-overlaid logo/text). Read before any image-gen run.",
+    "brief_schema": "./asset-brief.schema.json"
+  }
+}
