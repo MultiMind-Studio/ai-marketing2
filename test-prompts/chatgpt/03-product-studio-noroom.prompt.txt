@@ -1,0 +1,25 @@
+Create ONE on-brand Balluff PRESENTATION image, 1600x900, using the built-in image_gen tool.
+
+THE ATTACHED IMAGE IS A REAL BALLUFF PRODUCT (a BNI IO-Link master module). KEEP IT EXACTLY AS-IS —
+do NOT redraw, restyle, recolor, reshape, or distort the product or its on-device "BALLUFF" marking.
+Treat it as a fixed foreground hero element and integrate it into the scene with matching lighting.
+
+DIFFERENT DIRECTION — NO "Balluff Room": do NOT build an architectural room or curved-wall environment.
+Build a CLEAN STUDIO scene:
+- A soft silver-gray seamless studio backdrop — gentle gradient, light gray toward white, smooth, no
+  architecture, no props, no texture noise.
+- Soft directional key light; a subtle product-glow rim-light separating the product from the backdrop;
+  a clean, soft contact drop shadow on a smooth floor.
+
+COMPOSITION
+- Product is the hero: dynamic angle, right-of-center, confidently lit.
+- Generous clean negative space on the LEFT third for a presentation headline (added later in code).
+
+REGISTER (on-brand without the room)
+- Achromatic / silver-gray, premium, engineered, technical, calm.
+- At most a single small red accent (or none). NO additional text. NO extra logos beyond what's on the
+  product. NO people. NO busy background. NO fake UI.
+
+OUTPUT
+- Save the final PNG to this directory as balluff-product-studio.png and report the absolute path.
+- Do not write a script and do not ask questions — produce the image directly with built-in image_gen.

@@ -6,6 +6,16 @@
 > This file is the deterministic recipe. Read it before any image-gen run; the GLM (code) path
 > doesn't need most of this because code sets exact values directly.
 
+## On-brand is the REGISTER, not the room (don't over-prescribe)
+
+`design.md` mandates the "Balluff Room" backdrop. Treat that as **one expression** of the brand register,
+not the register itself. The register is: achromatic / silver-gray, engineered + clean, soft directional
+light + product glow, dynamic 45° (never centered), generous whitespace, Balluff Red as condiment, Roboto
+Flex, and — crucially — **compositing the REAL product instead of hallucinating one**. A clean silver-gray
+**studio** plate (no architectural room) is fully on-brand and often *better* for presentation slides
+(more headline space, less busy). Use the room when atmosphere wants it; use a clean studio when clarity
+wants it. (Rob, 2026-06-21 — the guidelines are overly prescriptive in making the room mandatory.)
+
 ## The five levers (in order of leverage)
 
 ### 1. Reference-image priming (the biggest lever)
