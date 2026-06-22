@@ -35,15 +35,17 @@ for ref in "$@"; do
   if [[ -f "$ref" ]]; then IMG_ARGS+=( -i "$ref" ); REFNOTE+=$'\n- '"$ref"; fi
 done
 
-INSTRUCT="Use the \$imagegen skill to generate exactly ONE image from the SPEC below.
-Use the attached reference image(s) to match the silver-gray Balluff Room register, lighting, and material treatment. Compose the subject within that register.
-Save the final PNG to: $OUT/$NAME.png
-Do NOT write a script, do NOT ask clarifying questions — produce the image directly with \$imagegen.
+INSTRUCT="Use your BUILT-IN image_gen tool (NOT the CLI/API path, NOT scripts/image_gen.py) to generate exactly ONE image from the SPEC below.
+Treat the attached image(s) as REFERENCE images: match their silver-gray Balluff Room register, lighting, perspective, and material treatment; compose the subject within that register.
+After generating, COPY the final selected image into THIS working directory as: $OUT/$NAME.png — then report the absolute saved path.
+Do NOT write a script, do NOT ask clarifying questions — produce the image directly with the built-in image_gen tool.
 Attached references:$REFNOTE
 
 SPEC:
 $PROMPT"
 
-echo "run-imagegen: '$NAME' via codex \$imagegen → $OUT/$NAME.png  (refs: ${#IMG_ARGS[@]})"
-cd "$OUT"
-exec codex exec --sandbox workspace-write "${IMG_ARGS[@]}" "$INSTRUCT" 2>&1 | tee "$OUT/run.log"
+echo "run-imagegen: '$NAME' via codex built-in image_gen → $OUT/$NAME.png  (ref imgs: $(( ${#IMG_ARGS[@]} / 2 )))"
+# Built-in image_gen needs network; isolated authorized smoke test in out/ → bypass sandbox/approvals.
+# NOTE: --image is variadic, so it would swallow a trailing positional prompt; pass the prompt via STDIN.
+printf '%s' "$INSTRUCT" | codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check \
+  -C "$OUT" "${IMG_ARGS[@]}" 2>&1 | tee "$OUT/run.log"
