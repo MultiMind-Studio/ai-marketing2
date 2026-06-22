@@ -35,13 +35,18 @@
 - **Proof:** `out/imagegen-rfid-hero/` (silver-gray Balluff Room register, sensor at 45° + product glow).
 - **Brand-lock:** silver-gray grade + code-overlay real logo/text. Raster is the SOURCE, final = composite.
 
-### 4. `balluff-product-shot` (GPT-Image-2) — a REAL product composited into an on-brand scene  **[PROVEN 2026-06-21]**
+### 4. `balluff-product-shot` (GPT-Image-2) — a REAL product composited into an on-brand scene  **[PROTOTYPE — iterate: EDGES]**
 - **Engine:** GPT-Image-2 (edit/composite) via `run-imagegen.sh` with a real product cutout attached (`-i`).
 - **Consumes:** a **real** Balluff product cutout (gopher `presentation-assets/.../cutouts/`) + the brand register.
 - **Produces:** product hero on a clean on-brand background — **studio OR room** (the register, not a mandatory room).
-- **Proof:** `out/imagegen-product-studio/` (BNI IO-Link master, clean silver-gray studio, NO Balluff Room) — Codex
-  generated a clean studio plate then **composited the original product foreground so its markings/wordmark were
-  not generatively redrawn**. The right pattern: generate the plate, keep the real product.
+- **First attempt:** `out/imagegen-product-studio/` (BNI IO-Link master, clean silver-gray studio, NO Balluff Room) — Codex
+  generated a clean plate then composited the original product so its markings weren't redrawn. **The right approach.**
+- **Rob verdict 2026-06-21: a fail — EDGES.** The composite seam between the cutout and the generated plate is rough
+  (matte fringe / mismatched edge light). **Tomorrow's fix levers:** (a) clean the cutout matte first — defringe/despill
+  (the imagegen skill ships `scripts/remove_chroma_key.py`); (b) deterministic composite in code for edge control —
+  feather + light-wrap + a grounded contact shadow + match the plate's light direction, rather than letting image_gen
+  blend; (c) higher input-fidelity edit if available. Concept is right (real product + register, no room); execution
+  needs the edge pass. **This is the one block to iterate — balluff-scene + balluff-build stay as-is (the composability payoff).**
 - **Key principle (Rob 2026-06-21):** preserve the **real** product (don't hallucinate it); on-brand = the
   **register** (achromatic / silver-gray / product-glow / 45° / red-condiment), NOT slavish room-replication.
   The guidelines are overly prescriptive in mandating the room — it's one expression of the register, not the register.
