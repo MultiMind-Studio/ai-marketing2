@@ -55,7 +55,8 @@
 
   "typography": {
     "typeface": "Roboto Flex",
-    "rule": "Roboto Flex everywhere (web, app, docs, decks, print). Never substitute a system font. Hierarchy via weight + size, never color alone. Headings bold; body regular; italic for proper-noun emphasis only.",
+    "rule": "Roboto Flex everywhere (web, app, docs, decks, print). Never substitute a system font, never pair a second face (single family is intentional). Hierarchy rides Roboto Flex's VARIABLE axes — weight (wght) + optical size (opsz) + width (wdth) + size — never color alone, never weight alone. Set font-optical-sizing:auto; use condensed wdth on large display headings for display-vs-body character. Headings heavier/tighter, body regular + text opsz; italic for proper-noun emphasis only.",
+    "axes": "Roboto Flex is a variable font: exploit opsz (optical size) + wdth (width) + full wght range (not just 400/700) for in-family display/body contrast. Flat-weight use (regular/bold only, no opsz/wdth) under-uses the font and is the one real single-font tell to avoid.",
     "font_files": "./fonts/Roboto_Flex/ (variable TTF + OFL). Web may load from Google Fonts CDN; local generators embed from here.",
     "scale": {
       "xs":  { "px": 12, "lh": 1.4,  "use": "eyebrow tags, helper text, footnotes" },

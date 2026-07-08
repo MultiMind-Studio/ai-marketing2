@@ -53,10 +53,14 @@
   --color-disabled: #BCBCBC;  /* alias of --color-chart-silver */
 
   /* ────────────────────────────────────────────────────────────
-   * Typography — Roboto Flex variable, regular for body, bold for
-   * emphasis and headings. Hierarchy is weight + size, not typeface variety.
+   * Typography — Roboto Flex (VARIABLE). Hierarchy rides its axes:
+   * weight (wght) + optical size (opsz) + width (wdth) + size — never
+   * weight alone, never a second face. font-optical-sizing:auto below makes
+   * opsz track size for free; tighten wdth on large display headings for
+   * display-vs-body character. Flat-weight use under-uses the font. (design.md)
    * ──────────────────────────────────────────────────────────── */
   --font-sans: "Roboto Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-optical-sizing: auto;  /* inherits from :root to all text */
 
   /* Type scale — values in design.md:144 (PMM-derived) */
   --text-xs:                 0.75rem;   /* 12 px */

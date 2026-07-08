@@ -140,12 +140,28 @@ this table.
 
 Roboto Flex is the Balluff typeface. Use it everywhere — web, app, generated
 documents, slide decks, print. Embed or load the typeface in every artifact;
-do not substitute a system font. Hierarchy is expressed through weight and
-size, not typeface variety. Body text is regular weight; emphasis is bold;
-headings are bold-larger. Color is supportive of hierarchy, never
-load-bearing — a heading should still read as a heading in monochrome.
-Vertical rhythm matters: paragraphs separated by clear line spacing, headings
-with consistent space-above and space-below.
+do not substitute a system font, and **do not pair a second face** — the
+single family is intentional (single-family brand systems are current, not
+dated; cf. IBM Plex, SAP). Hierarchy is expressed through **typeface variety
+within Roboto Flex**, not by adding a font. Roboto Flex is a *variable* font,
+and Balluff deliberately picked the variable cut: carry hierarchy and
+display-vs-body character on its axes — **weight (`wght`) + optical size
+(`opsz`) + width (`wdth`) + size** — not weight alone. Concretely:
+
+- Set **`font-optical-sizing: auto`** globally so `opsz` tracks font-size for
+  free (tighter, higher-contrast display text; more open, legible body).
+- On large display headings, tighten **`wdth`** (a slightly condensed heading
+  against normal-width body is the in-family "display face" — the character
+  contrast a display+body pairing would give, without leaving CI).
+- Use the full `wght` range, not just 400/700 — custom weights (e.g. 780, 840)
+  are on the table.
+
+Using Roboto Flex at flat weights (only regular/bold, no `opsz`/`wdth`) reads
+as under-using the variable font — that's the one real "single-font" tell to
+avoid. Color is supportive of hierarchy, never load-bearing — a heading should
+still read as a heading in monochrome. Vertical rhythm matters: paragraphs
+separated by clear line spacing, headings with consistent space-above and
+space-below.
 
 **Type scale.** Not documented in Balluff brand sources; the scale below is
 PMM-derived, calibrated against public balluff.com (see
@@ -167,9 +183,10 @@ that overrides this table.
 | 5xl   | 48 px | 1.1         | H1, page title                                         |
 | 6xl   | 60 px | 1.05        | Oversized hero H1 (sparingly)                          |
 
-Headings use Roboto Flex bold; body uses regular. Italic is reserved for
-proper-noun emphasis only — Balluff hierarchy is weight-and-size, not
-typeface variety.
+Headings use heavier `wght` + display `opsz` (and optionally condensed
+`wdth`); body uses regular weight + text `opsz`. Italic is reserved for
+proper-noun emphasis only — Balluff hierarchy rides Roboto Flex's variable
+axes (weight + optical-size + width + size), never a second typeface.
 
 ## Layout scales (PMM-derived)
 
