@@ -65,3 +65,15 @@ Today these are **harness + prompts** in this repo. To become first-class compos
 carrying its harness contract (engine, inputs, outputs, brand-lock, review). Tracked under the composability
 direction; the **empirical skill-loading test** (how many description-gated skills load cleanly at once) gates how
 aggressively we consolidate them under one orchestrator.
+
+### 5. `balluff-deck` (Claude/Opus workflow) — editable branded .pptx decks + argument diagrams  **[PROVEN 2026-08-04]**
+- **Engine:** Claude Code Workflow (Opus sub-agents) + pptxgenjs; runbook = MultiMind `.claude/skills/balluff-pptx/SKILL.md` (§Banked formula).
+- **Consumes:** `design.md`, `brand.spec.json`, `icons/` (rasterize via rsvg-convert ~4x, tint by longest-hex-first replace; viewBox 70x50 → place 7:5), chart palette; content spec authored per-slide then voice-harmonized.
+- **Produces:** fully NATIVE editable .pptx (every element a real shape/text run; Arial for internal sharing) + rendered-PNG review loop.
+- **Proof:** MultiMind `20_Projects/2026-08-03 PMM Tactical Plan 2026-2027/drafts/` (7-slide deck + 2-crop diagram bakeoff; 24 judged renders).
+- **The formula (2-crop bakeoff verdict, both judges converged):**
+  - **Native pptxgenjs = the only deliverable lane** (only lane that ships titled 16:9 slides Chris-editable). HTML/CSS = concepting lane: out-thinks native, ships nothing — harvest its encoding ideas, port to native. SVG lane retired for rhetoric (latitude → ornament twice).
+  - **Color gate:** a fill/stroke gets a hue ONLY if the hue encodes a distinction the reader can state aloud (time, owned vs unowned, today vs added); peer-vs-peer variety reverts to gray. Red never a data series; UI-state green/amber never on deck surfaces. Data-viz hues do area work; darkened ink relatives do line work (documented hexes vanish at 1.5px).
+  - **Curves are native-capable:** pptxgenjs 4.0.1 CUSTOM_GEOMETRY (cubic/quadratic/arc; points in inches relative to shape bbox; endArrowType works) — real S-curves, rounded return loops.
+  - **Verify by looking:** soffice → pdftoppm → agents READ the renders; judge pass scores clarity/brand/craft(/beauty).
+  - Full verdicts: MultiMind project `drafts/diagram-bakeoff-verdict-v{1,2}.md`.
