@@ -44,8 +44,10 @@ it as a deliberate correction of what the model would otherwise produce.
   override:** the default brand system uses color liberally for hierarchy
   and brand expression. Balluff's achromatic-plus-red is the deliberate
   inverse — color is rationed.
-- **Typography.** Never use a typeface other than Roboto Flex. Never rely on
-  color alone to convey hierarchy — weight and size do that work.
+- **Typography.** Never use a typeface other than Roboto Flex on web, app,
+  raster, or print surfaces. (Editable `.pptx` decks are the one documented
+  exception: Arial / Arial Black, never embedded — see Typography.) Never rely
+  on color alone to convey hierarchy — weight and size do that work.
 - **Composition.** Never center title or body content. Never use complicated
   perspectives or busy backgrounds. Never crowd the layout — white space is
   part of the design, not a leftover.
@@ -138,9 +140,10 @@ this table.
 
 ## Typography
 
-Roboto Flex is the Balluff typeface. Use it everywhere — web, app, generated
-documents, slide decks, print. Embed or load the typeface in every artifact;
-do not substitute a system font, and **do not pair a second face** — the
+Roboto Flex is the Balluff typeface. Use it on every surface that can load or
+bake it in — web, app, HTML/SVG builds, generated raster, print. Embed or load
+the typeface in those artifacts; do not substitute a system font, and **do not
+pair a second face** — the
 single family is intentional (single-family brand systems are current, not
 dated; cf. IBM Plex, SAP). Hierarchy is expressed through **typeface variety
 within Roboto Flex**, not by adding a font. Roboto Flex is a *variable* font,
@@ -162,6 +165,18 @@ avoid. Color is supportive of hierarchy, never load-bearing — a heading should
 still read as a heading in monochrome. Vertical rhythm matters: paragraphs
 separated by clear line spacing, headings with consistent space-above and
 space-below.
+
+**Slide decks are the documented exception (Rob rulings, 2026-08-04 and
+2026-08-06).** Decks built as editable `.pptx` use **Arial** for body and
+**Arial Black** for display, **never embedded**. Two reasons: coworkers who
+open a shared deck do not have Roboto Flex installed, and the current Balluff
+PowerPoint cannot save a deck that embeds Roboto Flex — so generator
+`embedFonts()` steps stay off. Do not "restore" Roboto Flex to a from-scratch
+deck without Rob save-testing the result first. Adapting an *existing* .pptx by
+direct XML edit preserves that deck's real Roboto Flex font runs, which is fine.
+The canonical source for deck generation, including this ruling, is
+`~/Workspaces/runbooks/build-a-balluff-deck.md`. Roboto Flex still applies to
+customer-facing raster surfaces, where the pixels bake it in.
 
 **Type scale.** Not documented in Balluff brand sources; the scale below is
 PMM-derived, calibrated against public balluff.com (see
@@ -519,7 +534,10 @@ canonical table reference.
 - **Studio-backdrop reference images** (attach for image-generation prompts
   where the backdrop matters): `balluff-rooms/`
 - **Fonts:** `fonts/Roboto_Flex/` — embed or load this typeface in every
-  generated artifact; do not substitute a system font.
+  generated web/raster/print artifact; do not substitute a system font there.
+  Editable `.pptx` decks are the exception: Arial / Arial Black, never
+  embedded (see Typography, and
+  `~/Workspaces/runbooks/build-a-balluff-deck.md`).
 - **Favicons:** `favicon/` (32 / 128 / 180 / 192 / 512 px + `.ico`).
 - **CSS tokens** (Tailwind v4 `@theme`, ingestable by Claude Design, v0,
   Lovable): `tokens.css`

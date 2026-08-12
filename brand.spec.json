@@ -55,9 +55,28 @@
 
   "typography": {
     "typeface": "Roboto Flex",
-    "rule": "Roboto Flex everywhere (web, app, docs, decks, print). Never substitute a system font, never pair a second face (single family is intentional). Hierarchy rides Roboto Flex's VARIABLE axes — weight (wght) + optical size (opsz) + width (wdth) + size — never color alone, never weight alone. Set font-optical-sizing:auto; use condensed wdth on large display headings for display-vs-body character. Headings heavier/tighter, body regular + text opsz; italic for proper-noun emphasis only.",
-    "axes": "Roboto Flex is a variable font: exploit opsz (optical size) + wdth (width) + full wght range (not just 400/700) for in-family display/body contrast. Flat-weight use (regular/bold only, no opsz/wdth) under-uses the font and is the one real single-font tell to avoid.",
-    "font_files": "./fonts/Roboto_Flex/ (variable TTF + OFL). Web may load from Google Fonts CDN; local generators embed from here.",
+    "rule": "Roboto Flex is the canonical Balluff face, but the FACE IS SURFACE-SCOPED — see typography.surfaces before choosing one. Roboto Flex on web/app/raster/print surfaces that can load or bake in the face; Arial / Arial Black on .pptx and other shared editable-document surfaces. Never pair a second face within a surface (single family is intentional). Hierarchy rides Roboto Flex's VARIABLE axes — weight (wght) + optical size (opsz) + width (wdth) + size — never color alone, never weight alone. Set font-optical-sizing:auto; use condensed wdth on large display headings for display-vs-body character. Headings heavier/tighter, body regular + text opsz; italic for proper-noun emphasis only.",
+    "surfaces": {
+      "note": "Surface decides the face. Ruling by Rob 2026-08-04 (shared-internally surfaces get Arial) and 2026-08-06 (Roboto Flex embedding retired for .pptx). This is a deliberate exception, not a shortcut — do not 'restore' Roboto Flex to decks.",
+      "web_app_raster": {
+        "scope": "Web, app, HTML/SVG builds, generated raster (customer-facing images, OG cards, PDFs/print) — anywhere the face can be loaded, embedded, or baked into pixels.",
+        "display": "Roboto Flex (heavier wght + display opsz, optionally condensed wdth)",
+        "body": "Roboto Flex (regular wght + text opsz)",
+        "embedding": "Load or embed from ./fonts/Roboto_Flex/ (web may use the Google Fonts CDN). Never substitute a system font here."
+      },
+      "pptx_deck": {
+        "scope": ".pptx decks and standalone diagram slides — editable documents shared with coworkers, who do not have Roboto Flex installed.",
+        "display": "Arial Black (substitute for Roboto Flex bold/display)",
+        "body": "Arial (substitute for Roboto Flex regular)",
+        "embedding": "NEVER embed fonts in a .pptx deliverable. The current Balluff PowerPoint cannot save decks that embed Roboto Flex (Rob, 2026-08-06), so generator embedFonts() steps stay OFF. Arial is un-embedded and renders everywhere.",
+        "why": "Two reasons, both Rob rulings: coworkers on shared decks lack Roboto Flex (2026-08-04), and embedded Roboto Flex breaks save in current Balluff PowerPoint (2026-08-06).",
+        "pattern": "FONT_MODE=arial switch plus true-Arial metrics; verify fit on dense slides, since layouts measured against Roboto Flex are not metric-identical.",
+        "canonical_source": "~/Workspaces/runbooks/build-a-balluff-deck.md — the deck runbook is authoritative for .pptx generation, including this font ruling. MultiMind .claude/skills/balluff-pptx/SKILL.md carries the code constants."
+      },
+      "template_modification_exception": "Adapting an existing .pptx by direct XML edit PRESERVES the source deck's Roboto Flex font runs. That is fine and is not a violation — the rule above governs decks built from scratch, which cannot embed."
+    },
+    "axes": "Roboto Flex is a variable font: exploit opsz (optical size) + wdth (width) + full wght range (not just 400/700) for in-family display/body contrast. Flat-weight use (regular/bold only, no opsz/wdth) under-uses the font and is the one real single-font tell to avoid. Axis work applies to Roboto Flex surfaces only — on Arial deck surfaces, hierarchy falls back to size + Arial Black for display.",
+    "font_files": "./fonts/Roboto_Flex/ (variable TTF + OFL). Web may load from Google Fonts CDN; raster/HTML generators embed from here. Deck (.pptx) generators embed NOTHING — see typography.surfaces.pptx_deck.",
     "scale": {
       "xs":  { "px": 12, "lh": 1.4,  "use": "eyebrow tags, helper text, footnotes" },
       "sm":  { "px": 14, "lh": 1.5,  "use": "small UI labels, table cells" },
@@ -123,7 +142,8 @@
 
   "hard_never": [
     "Never use Balluff Red as a dominant area color (condiment only).",
-    "Never use a typeface other than Roboto Flex.",
+    "Never use a typeface other than Roboto Flex on web/app/raster surfaces — no system-font substitution there. (.pptx/deck surfaces are the one documented exception: Arial / Arial Black, never embedded. See typography.surfaces.)",
+    "Never embed Roboto Flex in a .pptx — current Balluff PowerPoint cannot save the deck (Rob, 2026-08-06).",
     "Never center titles or body content.",
     "Never use emoji (use the SVG icon set).",
     "Never use gradients/textures/repeating patterns on brand surfaces.",
@@ -143,6 +163,7 @@
     "icons_index": "./icons.md",
     "logos_dir": "./logos/",
     "fonts_dir": "./fonts/Roboto_Flex/",
+    "deck_runbook": "~/Workspaces/runbooks/build-a-balluff-deck.md — canonical source for .pptx/deck generation (procedure, failure surface, and the Arial / un-embedded font ruling). Code constants: MultiMind .claude/skills/balluff-pptx/SKILL.md.",
     "favicon_dir": "./favicon/",
     "rooms_dir": "./balluff-rooms/",
     "examples_dir": "./examples/",
