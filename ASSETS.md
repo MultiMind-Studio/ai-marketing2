@@ -17,6 +17,9 @@ prompts.md     Canonical agent prompts for product hero, category landing page, 
 examples/      Reference captures of Balluff brand work in the wild — public balluff.com pages
                (Playwright). See examples/MANIFEST.md.
 logos/         Logo assets — kebab-case, see logos § below.
+chrome/        Slide frame chrome — balluff_grey_triangle.png (header triangle) + BalluffSlideHeader.png.
+               Copied 2026-08-19 from MultiMind 40_Resources/Balluff-Assets/Brand/ so deck builds
+               resolve everything brand from this repo.
 icons/         178 Balluff-supplied UI icons, SVG, kebab-case. Sourced from brandportal.balluff.com 2026-04-27.
 favicon/       B-signet favicon set: .ico (legacy), 32, 128, 180 (Apple touch), 192, 512 (PWA install).
 fonts/         Roboto Flex variable TTF + OFL license. Self-contained for offline generators.
