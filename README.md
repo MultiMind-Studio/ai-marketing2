@@ -1,59 +1,34 @@
-# ai-marketing2 — Balluff brand source-of-truth for AI visual generation
+# ai-marketing2: the Balluff Design System, packaged for AI-assisted work
 
-A clean, self-contained Balluff brand package built to feed **two AI generation engines**:
+Brand source of truth for building on-brand Balluff material with AI tools: decks, web surfaces, diagrams, and generated imagery. Everything a build needs (rules, tokens, logos, icons, fonts, slide chrome) lives in this one repo.
 
-- **GLM-5.2** (via Builder's `glm-delegate.sh`) — code builds: HTML / CSS / SVG / decks. Exact CI.
-- **GPT-Image-2** (via Codex's `$imagegen` system skill) — raster: hero backgrounds, atmospheric/editorial imagery.
+## If you're a person, start here
 
-> **Lineage (hermit-crab, 2026-06-21).** Seeded from `ai-marketing/design-system/` (the canonical half),
-> dropping the cruft (the duplicate `design-handoff/` bundle, the 8.9 M nested copy, the forked tokens,
-> dead prototypes). **`ai-marketing/` stays untouched and canonical for its existing consumers**
-> (Furnace's internal-BI dashboards + beacon decks consume `design-handoff/`; Kalli, Builder-common,
-> GLM-lab reference `design-system/design.md`). This repo is the *generation*-focused successor, not a
-> replacement of those feeds.
+- **`design.md`** is the brand doc: the three palettes (brand / data-viz / UI-state), gray scale, typography, logo placement, imagery rules, composition principles. Read this first.
+- **`logos/`** wordmark and claim, black/white, SVG/PNG/AI.
+- **`icons/`** 178 official Balluff SVG icons (from brandportal.balluff.com), indexed by use case in **`icons.md`**.
+- **`chrome/`** slide frame furniture: the grey header triangle and slide header used on every deck slide.
+- **`fonts/Roboto_Flex/`** the brand face. Note for decks: share internally in Arial (coworkers don't have Roboto Flex, and PowerPoint can't save it embedded); Roboto Flex is for surfaces where pixels bake it in.
+- **`examples/`** reference captures of balluff.com brand work; **`balluff-rooms/`** studio backdrop photography for compositing.
+- **`ASSETS.md`** the detailed asset-layout guide (naming, icon technical constraints, what lives where).
 
-## What's here
+## If you're an AI tool or writing prompts for one
 
-**Brand source (prose + assets — the rule layer):**
-- `design.md` — canonical 530-line Balluff brand doc (color, type, logo, imagery, composition, components). **Read this first.**
-- `tokens.css` — Tailwind v4 `@theme` tokens (generated from design.md).
-- `prompts.md` — canonical HTML-gen prompt templates (hero, landing, one-pager, section, case-study).
-- `icons.md` + `icons/` — 178 Balluff SVG icons (use-case indexed).
-- `logos/`, `fonts/Roboto_Flex/`, `favicon/`, `examples/`, `balluff-rooms/` — real brand assets + reference renders.
-- `ASSETS.md` — the detailed asset-layout guide (logos naming, icon technical constraints).
+- **`brand.spec.json`** machine-readable brand: palettes, type scale, layout, logo rules, imagery rules, hard-never rules, engine routing.
+- **`tokens.css`** Tailwind v4 `@theme` tokens generated from design.md.
+- **`prompts.md`** prompt templates for common surfaces (hero, landing, one-pager, section, case-study).
+- **`asset-brief.schema.json`** JSON Schema for an asset brief that compiles to a build or image-gen prompt.
+- **`brand-locking.md`** how to hold Balluff CI in a raster image model: reference priming, achromatic constraint, numeric silver-gray grade, deterministic logo/text overlay. Read before any image-gen run.
+- **`COMPOSABLE-SKILLS.md`** the proven building blocks (on-brand code builds, scene imagery, product shots, editable .pptx decks) and how they compose.
 
-**Machine layer (NEW — the gap the research flagged):**
-- `brand.spec.json` — machine-readable brand (palettes, type scale, layout, logo, imagery, hard-never rules) for prompt builders.
-- `asset-brief.schema.json` — JSON Schema for an asset brief (compiles to a GLM build prompt or a GPT-Image-2 prompt).
-- `brand-locking.md` — **how to actually hold Balluff CI in a raster model** (reference priming + achromatic constraint + numeric silver-gray grade + code-overlay logo/text). Read before any image-gen run.
+## The one principle that governs everything
 
-**Test harness + prompts:**
-- `test-prompts/glm/` — GLM build test prompts (code-strength surfaces).
-- `test-prompts/chatgpt/` — GPT-Image-2 briefs (`.json`) + compiled prompts (`.prompt.txt`) for image-strength surfaces.
-- `test-prompts/README.md` — the GLM-vs-ChatGPT head-to-head matrix.
-- `harness/run-glm.sh` — drive a GLM build → `out/glm-<name>/`.
-- `harness/run-imagegen.sh` — drive a GPT-Image-2 generation via Codex `$imagegen` → `out/imagegen-<name>/`.
-- `out/` — generated artifacts (gitignored).
+Keep **final typography, layout, and exact data in code** (HTML/SVG/native PowerPoint shapes). Use **image generation only for source imagery** (backgrounds, atmosphere), then composite real logos and set real text deterministically. Generated output drifts off-brand; eyeball and brand-review before anything ships. See `brand.spec.json` under `generation.routing` and `brand-locking.md`.
 
-## Quick start
+## Test harness (historical, June 2026)
 
-```bash
-# GLM code build (works today, Z.ai-billed):
-harness/run-glm.sh rfid-landing ~/Workspaces/ai-marketing2/test-prompts/glm/01-rfid-category-landing.md
+`test-prompts/` and `harness/` hold the GLM-vs-image-model head-to-head that validated the routing principle above. Kept for reference; the current deck workflow lives outside this repo and consumes the brand source directly.
 
-# GPT-Image-2 raster (via Codex $imagegen; needs codex login):
-harness/run-imagegen.sh rfid-hero \
-  ~/Workspaces/ai-marketing2/test-prompts/chatgpt/01-rfid-hero-background.prompt.txt \
-  ~/Workspaces/ai-marketing2/balluff-rooms/balluff-room-studio-01.jpg \
-  ~/Workspaces/ai-marketing2/examples/00-primary-optical-sensors.jpeg
-```
+## Lineage
 
-## Engine routing (the core principle)
-
-Keep **final typography + responsive layout + exact data** in code (GLM/SVG/HTML). Use **image-gen**
-for source imagery only — hero backgrounds, atmosphere — then **composite real logos + overlay text
-deterministically**. See `brand.spec.json → generation.routing` and `brand-locking.md`.
-
-> GLM and GPT-Image-2 output are **untrusted + may drift off-brand**. Eyeball + brand-review before any
-> ship. Full automated fidelity verification (deltaE / red-ratio / OCR / logo-presence + a brand judge)
-> is the deferred "full verification workflow."
+Seeded 2026-06-21 from the older `ai-marketing/design-system/`, dropping duplicated bundles and dead prototypes. That older repo remains in place for its existing consumers; this one is the generation-focused successor and the canonical brand source for new work. Slide chrome added from the Balluff asset library 2026-08-19.
