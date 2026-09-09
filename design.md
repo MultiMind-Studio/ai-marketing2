@@ -209,7 +209,7 @@ Spacing, breakpoints, radius, and elevation are not documented in Balluff
 brand sources. The values below are PMM-derived, calibrated against public
 balluff.com (see `examples/MANIFEST.md`). They are pinned for consistency
 across AI-generated artifacts and align with Tailwind v4 defaults so
-generators (Claude Design, v0, Lovable, americas-landing) interop cleanly.
+generators interop cleanly.
 If a future brand-source revision documents official scales, those override.
 
 ### Spacing
