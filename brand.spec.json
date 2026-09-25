@@ -26,7 +26,7 @@
   },
 
   "color": {
-    "rule": "Achromatic + Balluff Red as condiment. Red is rationed, never a dominant area color. This achromatic-plus-red inverse of the colorful automation field is the deliberate differentiator.",
+    "rule": "Achromatic + Balluff Red as condiment. Red is rationed, never a dominant area color. This achromatic-plus-red inverse of the colorful automation field is the deliberate differentiator. The data-viz palette (steel blue, cyan, teal, green) is part of the brand for information design: charts, diagrams, explainers, animated and illustrated systems, in any medium, including video. Achromatic-plus-red governs brand surfaces; it is not a ban on the cool palette in information design.",
     "brand": {
       "black":       { "hex": "#1d1d1b", "use": "Primary text; logo on light backgrounds" },
       "white":       { "hex": "#ffffff", "use": "Primary backgrounds; logo on dark backgrounds" },
@@ -42,7 +42,7 @@
       "gray-900": { "hex": "#1d1d1b", "tint": "100%", "use": "primary text (= balluff black)" }
     },
     "data_viz": {
-      "scope": "Charts/diagrams/dashboards/KPIs ONLY. Never brand-surface, button, or decorative background. Intentionally desaturated.",
+      "scope": "Information design in any medium: charts, diagrams, dashboards, KPIs, system explainers, illustrated or animated architecture, video. Use it whenever a hue encodes a distinction the viewer can state aloud (this system vs that one, data vs structure, before vs after). Never brand-surface, button, or decorative background. Intentionally desaturated. Red stays the emphasis, never a data series.",
       "steel_blue": "#6A9DC6", "cyan": "#70BFD7", "cool_gray": "#94A7B4",
       "silver": "#BCBCBC", "teal_sage": "#A3C7C7", "muted_green": "#779389"
     },

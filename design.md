@@ -77,7 +77,8 @@ This palette defines every brand surface — title slides, hero sections,
 document headers, navigation, layout backgrounds, primary buttons.
 Achromatic-plus-red is the differentiator that sets Balluff apart from the
 colorful field of automation competitors. Red is condiment, not paint: if a
-layout looks balanced without red, leave the red out.
+layout looks balanced without red, leave the red out. This rationing governs brand surfaces; information
+design (diagrams, explainers, video) also draws on the data-viz palette below.
 
 | Color        | HEX     | Use                                                        |
 |--------------|---------|------------------------------------------------------------|
@@ -100,8 +101,12 @@ deterministic scale unless brand-source documentation overrides:
 ### 2. Data visualization palette
 
 For multi-series charts, diagrams, dashboards, KPI tiles, heat maps, pie
-segments, and any artifact where data must be distinguished by hue. Applies
-equally to web, app, print, and slides. *Do not* use these as brand-surface
+segments, system explainers, illustrated or animated architecture, and any
+artifact where data must be distinguished by hue. Applies equally to web, app,
+print, slides, motion and video. In explainers, use the cool palette to tell
+systems and data flows apart; red stays the emphasis. The test for any hue:
+it encodes a distinction the viewer can state aloud. Achromatic-plus-red
+governs the brand surface, not the information design on it. *Do not* use these as brand-surface
 colors, button colors, or decorative backgrounds — they are reserved for
 information design.
 
